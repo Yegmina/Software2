@@ -34,11 +34,13 @@ class Race:
         self.distance_in_km = distance_in_km
         self.cars_list = cars_list
         self.racing=True
+        self.time = 0
+
     def full_race(self):
+
         while self.racing:
             self.hour_passes()
     def hour_passes(self):
-        self.time = 0
         self.racing = True
 
             # if (next((car for car in cars if car.travelled_distance > 10000), None)) is not None: #wanted to try something fun but it is not working as expected hah
