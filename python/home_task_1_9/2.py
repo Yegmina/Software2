@@ -1,15 +1,18 @@
 class Car:
     def accelerate(self, speed_changer):
         speed_changer=int(speed_changer)
-        self.current_speed=self.current_speed+speed_changer
-        if self.current_speed<=0:
+        #self.current_speed=self.current_speed+speed_changer
+        self.current_speed = max(0, min(self.current_speed + speed_changer, self.maximum_speed))
+
+        """if self.current_speed<=0:
             self.current_speed=0
             print(f"speed of the car is 0 so car stopped")
         elif self.current_speed>self.maximum_speed:
             print(f"speed reached the limit, now it is {self.current_speed}")
             self.current_speed=self.maximum_speed
         else:
-            print(f"now speed is {self.current_speed}")
+            print(f"now speed is {self.current_speed}")"""
+        print(f"now speed is {self.current_speed}")
 
         return self.current_speed #to have ability to write speed=accelerate...
 
