@@ -49,7 +49,7 @@ while racing:
         car.drive(1)
         print(vars(car))  # print all properties of car object
         if car.travelled_distance>10000:
-            print(f"car {car.travelled_distance} win!")
+            print(f"car {car.registration_number} win!")
             racing=False
             break
 
