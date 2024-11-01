@@ -14,7 +14,7 @@ def GetWeatherInCity(local_city):
     try:
         responce = requests.get(
             f"https://api.openweathermap.org/data/2.5/weather?q={local_city}&appid=10502fcf40c62fef835418b37164ade7")
-        if responce.status_code == 200:
+        if responce.status_code == 200: #if not responce.ok
             responce=responce.json()
             description = responce['weather'][0]['description']
             kelvin_temp=responce['main']['temp']
