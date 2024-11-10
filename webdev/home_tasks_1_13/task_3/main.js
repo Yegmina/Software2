@@ -13,3 +13,5 @@ let average=number(sum/3)
 alert("sum="+ sum)
 alert("product="+ product)
 alert("average="+ average)
+
+//I do not check user input but it is possible to check it with == Nan
