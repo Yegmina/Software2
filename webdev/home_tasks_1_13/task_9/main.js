@@ -4,7 +4,7 @@ let number = prompt("Enter a number to check whether it is prime or not");
 //7727 is prime number, can be checked in testing, it work quite fast so
 function PrimeChecker(number) {
 
-  if (isNaN(number) || number === null || number.trim() === "") {
+  if (isNaN(number) || number === null || number === "") {
     alert("Please enter a valid number");
     return null; //input checker
   }
