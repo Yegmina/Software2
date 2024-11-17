@@ -2,6 +2,7 @@
 
 /* start of the template */
 const debug_phase = "pre-alfa";
+
 /*get functions*/
 function getValueByName(local_name) {
   const element = getElement('name', local_name);
@@ -53,8 +54,7 @@ function getElement(selector, value) {
     return elements;
   }
   else if (elements.length > 1 && selector === 'id') {
-    //alert("Different tags with same id found! Check HTML code and fix this!")
-    console.error("Different tags with same id found! Check HTML code and fix this!")
+    alert("Different tags with same id found! Check HTML code and fix this!")
     console.log(`Unexpected duplicates with the same ${selector}: ${value}`);
     return elements;
   }
@@ -65,7 +65,6 @@ function getElement(selector, value) {
 /*get function end*/
 
 /* alert and console log functions, debuging etc */
-
 
 // Overriding the alert function conditionally based on debug_phase;
 function alert(string) {
@@ -83,16 +82,3 @@ function alert(string) {
 
 
 /* end of the template*/
-
-getElement("id", "source").addEventListener('submit',
-    function(event){
-      event.preventDefault();
-      let name=getValueByName("firstname")
-      let lastname=getValueByName("lastname")
-      let objP=getElement("id", "target")
-      objP.innerText="Your name is "+name+" "+lastname
-    }
-
-
-    );
-

@@ -1,6 +1,6 @@
 'use strict';
 
-//tried to make is universal
+//tried to make it universal a bit
 function getActionOption(){
   let action=document.getElementById("operation").value;
   return action//warning ignored at purpose

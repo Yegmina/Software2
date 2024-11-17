@@ -7,8 +7,6 @@ function getCalculationInput() {
 function parseCalculation(input) {
   const operators = ["+", "-", "*", "/"];
   let operator;
-
-
   for (let op of operators) {
     if (input.includes(op)) {
       operator = op;
