@@ -88,14 +88,66 @@ function alert(string) {
 const form = getElement("tag", "form")
 form.addEventListener('submit', async function(evt) {
     // ... prevent the default action.
-    //evt.preventDefault();
+    evt.preventDefault();
     // get value of input element
     const query = getValueById("query");
     try {                                               // error handling: try/catch/finally
         const response = await fetch(`https://api.tvmaze.com/search/shows?q=${query}`);    // starting data download, fetch returns a promise which contains an object of type 'response'
         const jsonData = await response.json();          // retrieving the data retrieved from the response object using the json() function
-        console.log(jsonData,);    // log the result to the console
+        console.log(jsonData);    // log the result to the console
+        substract_and_print(jsonData);
     } catch (error) {
         console.log(error.message);
     }
 });
+
+function substract_and_print(data) {
+  //clean previoous
+  const target=document.getElementById("results")
+  target.innerHTML=" "
+  for (let item of data) {
+    let item_name=item["show"]["name"] || "none"
+    let item_url=item["show"]["url"]
+    function getItemMediumImage(item) {
+      return item["show"]["image"]?.["medium"] ? item["show"]["image"]["medium"] : "https://via.placeholder.com/210x295?text=Not%20Found";
+    }
+
+    let item_medium_image=getItemMediumImage(item) //url
+
+    let item_image_name=item_name
+    let item_summary=item["show"]["summary"] || "none"
+
+
+    let objArticle=document.createElement("article")
+    let objH2Name=document.createElement("h2")
+    let objAUrl=document.createElement("a")
+    objAUrl.target="_blank"
+    let objImgMedium=document.createElement("img")
+
+
+    let objDivSummary=document.createElement("div")
+
+
+    objH2Name.innerHTML=item_name
+    objAUrl.href=item_url
+    objAUrl.text=item_url
+    objImgMedium.src=item_medium_image
+    objImgMedium.alt=item_image_name
+
+
+    objDivSummary.innerHTML=item_summary
+
+    objArticle.appendChild(objH2Name)
+    objArticle.appendChild(objAUrl)
+    let objBr=document.createElement("br")
+    objArticle.appendChild(objBr)
+    objArticle.appendChild(objImgMedium)
+    objArticle.appendChild(objDivSummary)
+
+
+    target.appendChild(objArticle)
+  }
+
+
+
+}
