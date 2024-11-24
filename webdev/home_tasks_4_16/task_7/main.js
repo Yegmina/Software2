@@ -77,7 +77,7 @@ async function getRoute(origin, target) {
         headers: {
             'Content-Type': 'application/json',
             'digitransit-subscription-key': 'fdbc6a8bbeee4b0899c8a19f95cb0a43',
-        },
+        }, //btw, I know that I pushed api key, it was required at the task in order to work the script
         body: JSON.stringify({ query: GQLQuery }),
     };
 
