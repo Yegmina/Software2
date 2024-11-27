@@ -1,26 +1,46 @@
 // example.js
 'use strict';
 
-const lat = 60;
-const lon = 21;
+const weatherForm=document.getElementById("weather-form")
+const placeField=document.querySelector('input[name=place]')
+
+const place="Espoo"
 const APIkey = '7bfbeb2ebaec8cdb59103f744a3e8c1f'; //I know that APi key is in github
 
-const request = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
 
-async function fetchWeather() {
-  try {
+let map = L.map('map').setView([60.2, 24.9], 9); //map object, map function, 'map' id
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+
+
+async function fetchWeather(place) {
+  const request = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${APIkey}&units=metric`;
+
     const response = await fetch(request);
     if (!response.ok) {
       throw new Error('Resource not found');
     }
     const weather = await response.json();
-    const name = weather.name;
-    const temp = weather.main.temp;
-    console.log(`Name: ${name}`);
-    console.log(`Temperature: ${temp} Celsius`);
-  } catch (error) {
-    console.log(error.message);
-  }
+    return weather;
+
 }
 
-fetchWeather();
+//fetchWeather();
+
+weatherForm.addEventListener("submit", async function(evt){
+  evt.preventDefault()
+  const place=placeField.value
+  const result=await fetchWeather(place)
+  console.log(result)
+
+  const marker=L.marker([result.coord.lat, result.coord.lon]).addTo(map)
+  map.setView([result.coord.lat, result.coord.lon])
+
+
+
+})

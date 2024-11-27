@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <link rel="stylesheet" href="example.css">
+
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
     <script src="example.js" defer></script>
+
 </head>
 <body>
 <h1>Example</h1>
+<section class="search-form">
+<form id="weather-form">
+    <input type="text" name="place" placeholder="Enter town name">
+    <button type="submit">Search</button>
+</form>
+</section>
+<section class="map-area">
+     <div id="map"></div>
+</section>
 </body>
 </html>
