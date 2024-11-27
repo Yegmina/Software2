@@ -39,11 +39,30 @@ weatherForm.addEventListener("submit", async function(evt){
   const place=placeField.value
   const result=await fetchWeather(place)
   console.log(result)
-
+  //remove exiting marker, create marker
   const marker=L.marker([result.coord.lat, result.coord.lon]).addTo(map)
   markers.clearLayers()
   markers.addLayer(marker)
   map.setView([result.coord.lat, result.coord.lon])
+
+  //HTML for the popup
+
+  const placeName=document.createElement("h3")
+  placeName.innerText=result.name
+
+  const temperature=document.createElement("p")
+  temperature.innerText=`Temperature=${result.main.temp} C`
+  const wind=document.createElement("p")
+  wind.innerText=`Wind speed: ${result.wind.speed} m/s`
+
+  const article=document.createElement("article")
+  article.appendChild(placeName)
+  article.appendChild(temperature)
+  article.appendChild(wind)
+  marker.bindPopup(article)
+
+  marker.openPopup()
+
 
 
 
