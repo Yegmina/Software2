@@ -3,7 +3,7 @@
 
 const lat = 60;
 const lon = 21;
-const APIkey = '7bfbeb2ebaec8cdb59103f744a3e8c1f';
+const APIkey = '7bfbeb2ebaec8cdb59103f744a3e8c1f'; //I know that APi key is in github
 
 const request = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
 
