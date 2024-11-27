@@ -6,6 +6,7 @@ const placeField=document.querySelector('input[name=place]')
 
 const place="Espoo"
 const APIkey = '7bfbeb2ebaec8cdb59103f744a3e8c1f'; //I know that APi key is in github
+//it is free key, in educational purpose using only
 
 
 let map = L.map('map').setView([60.2, 24.9], 9); //map object, map function, 'map' id
@@ -50,6 +51,9 @@ weatherForm.addEventListener("submit", async function(evt){
   const placeName=document.createElement("h3")
   placeName.innerText=result.name
 
+  const img=document.createElement("img")
+  img.src=`https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`
+  img.alt=result.weather.description
   const temperature=document.createElement("p")
   temperature.innerText=`Temperature=${result.main.temp} C`
   const wind=document.createElement("p")
@@ -59,6 +63,7 @@ weatherForm.addEventListener("submit", async function(evt){
   article.appendChild(placeName)
   article.appendChild(temperature)
   article.appendChild(wind)
+  article.appendChild(img)
   marker.bindPopup(article)
 
   marker.openPopup()
