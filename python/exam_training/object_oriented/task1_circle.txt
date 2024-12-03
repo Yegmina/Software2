@@ -1,0 +1,18 @@
+class Circle:
+  def __init__(self, radius):
+    self.radius=radius
+  def CalculateArea(self):
+    area=3.14*self.radius*self.radius
+    return area
+  def CalculatePerimeter(self):
+    perimeter=2*3.14*self.radius
+    return perimeter
+  def PrintArea(self):
+    print(f"Area= {self.CalculateArea()}")
+    return 0
+  def PrintPerimeter(self):
+    print(f"Perimeter={self.CalculatePerimeter()}")
+    return 0
+circle=Circle(10)
+circle.PrintArea()
+circle.PrintPerimeter()
